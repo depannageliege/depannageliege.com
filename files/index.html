@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dépannage Liège – Remorquage 24h/7j | 4000 Liège & Région</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --black: #0a0a0a; --dark: #111214; --steel: #1c1f24; --plate: #252930;
+      --white: #f0ece4; --muted: #8a8d94; --line: #2a2d34;
+      --orange: #f07020; --orange-hot: #ff8c2a;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03; pointer-events: none; z-index: 9999;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 4rem;
+      background: rgba(10,10,10,0.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.1em; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; background: var(--orange); color: var(--black); padding: 0.55rem 1.4rem; text-decoration: none; clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%); transition: background 0.2s; }
+    .nav-cta:hover { background: var(--orange-hot); }
+
+    /* HERO */
+    #accueil { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(130deg, rgba(240,112,32,0.07) 0%, transparent 50%),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.013) 59px, rgba(255,255,255,0.013) 60px),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.013) 59px, rgba(255,255,255,0.013) 60px);
+    }
+    .hero-right-panel { position: absolute; top: 0; right: 0; width: 52%; height: 100%; background: var(--steel); clip-path: polygon(10% 0%,100% 0%,100% 100%,0% 100%); }
+    .hero-right-panel::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 7px, rgba(240,112,32,0.035) 7px, rgba(240,112,32,0.035) 8px); }
+    .hero-content { position: relative; z-index: 2; padding: 9rem 3rem 5rem 6rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.73rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); border: 1px solid rgba(240,112,32,0.35); padding: 0.32rem 1rem; margin-bottom: 1.8rem; animation: fadeUp 0.6s ease both; }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; animation: blink 1.6s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.2rem, 5.5vw, 6rem); line-height: 0.93; letter-spacing: 0.03em; color: var(--white); animation: fadeUp 0.6s 0.1s ease both; }
+    .hero-title em { font-style: normal; color: var(--orange); display: block; }
+    .hero-zone { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.2rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); animation: fadeUp 0.6s 0.15s ease both; }
+    .hero-sub { margin-top: 1.5rem; font-size: 1rem; font-weight: 300; line-height: 1.75; color: var(--muted); max-width: 400px; animation: fadeUp 0.6s 0.2s ease both; }
+    .hero-actions { display: flex; gap: 1rem; margin-top: 2.2rem; animation: fadeUp 0.6s 0.3s ease both; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.55rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: var(--orange); color: var(--black); padding: 0.95rem 1.8rem; text-decoration: none; clip-path: polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%); transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--orange-hot); transform: translateY(-2px); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.55rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; color: var(--white); padding: 0.95rem 1.8rem; border: 1px solid var(--line); text-decoration: none; clip-path: polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%); transition: border-color 0.2s, color 0.2s; }
+    .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); animation: fadeUp 0.6s 0.4s ease both; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); line-height: 1; }
+    .stat-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
+    .hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 9rem 4rem 5rem 2rem; gap: 2rem; }
+    .truck-svg { width: 100%; max-width: 460px; filter: drop-shadow(0 20px 50px rgba(240,112,32,0.22)); animation: floatIn 0.8s 0.3s ease both; }
+    .zone-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; animation: fadeUp 0.7s 0.5s ease both; }
+    .zone-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: rgba(240,112,32,0.1); border: 1px solid rgba(240,112,32,0.25); color: var(--orange); padding: 0.3rem 0.8rem; clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%); }
+    @keyframes floatIn { from{opacity:0;transform:translateX(28px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+    /* URGENCE BANNER */
+    .urgence-banner { background: var(--orange); padding: 1.1rem 4rem; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+    .urgence-item { display: flex; align-items: center; gap: 0.6rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); }
+
+    /* SECTIONS */
+    section { padding: 6rem 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+    .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.73rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.8rem; }
+    .section-label::before { content: ''; width: 28px; height: 2px; background: var(--orange); }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 4vw, 3.6rem); letter-spacing: 0.04em; line-height: 1; color: var(--white); margin-bottom: 0.8rem; }
+    .section-desc { font-size: 0.97rem; font-weight: 300; line-height: 1.8; color: var(--muted); max-width: 500px; }
+
+    /* SERVICES */
+    #services { background: var(--dark); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 3.5rem; background: var(--line); border: 1.5px solid var(--line); }
+    .service-card { background: var(--dark); padding: 2.2rem; position: relative; overflow: hidden; transition: background 0.3s; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--orange); transition: height 0.4s ease; }
+    .service-card:hover { background: var(--steel); }
+    .service-card:hover::before { height: 100%; }
+    .service-icon { width: 48px; height: 48px; background: rgba(240,112,32,0.1); border: 1px solid rgba(240,112,32,0.22); display: flex; align-items: center; justify-content: center; margin-bottom: 1.3rem; clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%); }
+    .service-icon svg { width: 22px; height: 22px; stroke: var(--orange); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .service-num { position: absolute; top: 1.2rem; right: 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 3.2rem; color: rgba(255,255,255,0.03); line-height: 1; }
+    .service-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 0.7rem; }
+    .service-desc { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: var(--muted); }
+
+    /* ZONE */
+    #zone { background: var(--black); }
+    .zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3.5rem; align-items: start; }
+    .zone-map-placeholder { background: var(--steel); border: 1px solid var(--line); aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; position: relative; overflow: hidden; }
+    .zone-map-placeholder::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(240,112,32,0.03) 10px, rgba(240,112,32,0.03) 11px); }
+    .zone-map-icon { position: relative; z-index: 1; }
+    .zone-map-icon svg { width: 64px; height: 64px; stroke: var(--orange); fill: none; stroke-width: 1.5; opacity: 0.7; }
+    .zone-map-text { position: relative; z-index: 1; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .zone-list-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; }
+    .zone-group { margin-bottom: 1.5rem; }
+    .zone-group-name { font-family: 'Barlow Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); padding: 0.4rem 0; border-bottom: 1px solid var(--line); margin-bottom: 0.8rem; }
+    .zone-cities { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .zone-city { font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; color: var(--muted); background: var(--steel); border: 1px solid var(--line); padding: 0.25rem 0.7rem; transition: color 0.2s, border-color 0.2s; cursor: default; }
+    .zone-city:hover { color: var(--orange); border-color: rgba(240,112,32,0.3); }
+    .zone-city.main { color: var(--white); border-color: rgba(240,112,32,0.5); background: rgba(240,112,32,0.08); }
+
+    /* CONTACT */
+    #contact { background: var(--dark); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3.5rem; align-items: start; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1.1rem; padding: 1.3rem 1.5rem; background: var(--steel); border: 1px solid var(--line); border-left: 3px solid var(--orange); }
+    .contact-item-icon { width: 38px; height: 38px; background: rgba(240,112,32,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-item-icon svg { width: 18px; height: 18px; stroke: var(--orange); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-item-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+    .contact-item-value { font-size: 0.97rem; font-weight: 500; color: var(--white); }
+    .contact-item-value a { color: var(--white); text-decoration: none; transition: color 0.2s; }
+    .contact-item-value a:hover { color: var(--orange); }
+    .contact-note { margin-top: 1.5rem; padding: 1.2rem 1.5rem; background: rgba(240,112,32,0.08); border: 1px solid rgba(240,112,32,0.2); font-size: 0.88rem; line-height: 1.7; color: var(--muted); }
+    .contact-note strong { color: var(--orange); font-weight: 600; }
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-label { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .form-input, .form-textarea, .form-select { background: var(--steel); border: 1px solid var(--line); border-bottom: 2px solid var(--line); color: var(--white); font-family: 'Barlow', sans-serif; font-size: 0.93rem; padding: 0.85rem 1.1rem; outline: none; transition: border-color 0.2s; width: 100%; }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-bottom-color: var(--orange); }
+    .form-select { appearance: none; cursor: pointer; }
+    .form-textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .btn-submit { display: flex; align-items: center; justify-content: center; gap: 0.55rem; font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; background: var(--orange); color: var(--black); border: none; padding: 1.05rem 2rem; cursor: pointer; clip-path: polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%); transition: background 0.2s; margin-top: 0.4rem; }
+    .btn-submit:hover { background: var(--orange-hot); }
+
+    /* FOOTER */
+    footer { background: var(--steel); border-top: 1px solid var(--line); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.1em; color: var(--white); }
+    .footer-logo span { color: var(--orange); }
+    .footer-zone { font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .footer-copy { font-size: 0.78rem; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #accueil { grid-template-columns: 1fr; }
+      .hero-right-panel { display: none; }
+      .hero-content { padding: 7rem 1.5rem 3rem; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .zone-grid, .contact-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 1.5rem; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+      .urgence-banner { padding: 1rem 1.5rem; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#accueil">DÉPANNAGE<span>LIÈGE</span></a>
+  <ul class="nav-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#zone">Zone</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:+32475339898">📞 Appel urgent</a>
+</nav>
+
+<section id="accueil">
+  <div class="hero-bg"></div>
+  <div class="hero-right-panel"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Disponible 24h/24 — 7j/7</div>
+    <h1 class="hero-title">Remorquage<br><em>&amp; Dépannage</em>Rapide</h1>
+    <div class="hero-zone">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#f07020"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      4000 Liège &amp; toute la Province
+    </div>
+    <p class="hero-sub">Votre véhicule est en panne ou accidenté ? Nous intervenons rapidement à Liège et dans toute la région pour vous dépanner, remorquer ou rapatrier votre véhicule.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:+32475339898">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l1.71-1.71a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Appeler maintenant
+      </a>
+      <a class="btn-secondary" href="#services">Nos services</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">24/7</div><div class="stat-label">Disponibilité</div></div>
+      <div><div class="stat-num">30'</div><div class="stat-label">Délai moyen</div></div>
+      <div><div class="stat-num">4000</div><div class="stat-label">Liège & région</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <svg class="truck-svg" viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a3040"/><stop offset="100%" stop-color="#1a1e26"/></linearGradient>
+        <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#303844"/><stop offset="100%" stop-color="#1e2330"/></linearGradient>
+        <linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6090ff"/><stop offset="100%" stop-color="transparent"/></linearGradient>
+      </defs>
+      <ellipse cx="260" cy="265" rx="220" ry="10" fill="rgba(0,0,0,0.4)"/>
+      <rect x="60" y="130" width="300" height="100" rx="6" fill="url(#tg)"/>
+      <path d="M300 130 L300 80 Q300 70 310 70 L400 70 Q440 70 460 100 L470 130Z" fill="url(#cg)"/>
+      <path d="M315 125 L315 88 Q315 82 322 82 L395 82 Q425 82 442 100 L448 125Z" fill="#0d1117" opacity="0.9"/>
+      <path d="M315 125 L315 88 Q315 82 322 82 L395 82 Q425 82 442 100 L448 125Z" fill="url(#gg)" opacity="0.25"/>
+      <rect x="60" y="158" width="410" height="12" fill="#f07020" opacity="0.9"/>
+      <rect x="76" y="82" width="14" height="52" rx="3" fill="#2a3040" transform="rotate(-8,83,108)"/>
+      <rect x="62" y="57" width="52" height="10" rx="3" fill="#f07020" transform="rotate(-8,88,62)"/>
+      <path d="M65 60 Q52 60 52 74 Q52 84 62 84" fill="none" stroke="#f07020" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="140" cy="232" r="30" fill="#111"/><circle cx="140" cy="232" r="22" fill="#1c2028"/><circle cx="140" cy="232" r="10" fill="#f07020"/>
+      <circle cx="320" cy="232" r="30" fill="#111"/><circle cx="320" cy="232" r="22" fill="#1c2028"/><circle cx="320" cy="232" r="10" fill="#f07020"/>
+      <circle cx="420" cy="232" r="26" fill="#111"/><circle cx="420" cy="232" r="19" fill="#1c2028"/><circle cx="420" cy="232" r="9" fill="#f07020"/>
+      <rect x="458" y="105" width="14" height="8" rx="2" fill="#f07020"/>
+      <rect x="458" y="115" width="14" height="6" rx="2" fill="#ffaa44" opacity="0.7"/>
+      <rect x="335" y="63" width="22" height="10" rx="5" fill="#f07020"/>
+      <ellipse cx="346" cy="63" rx="11" ry="4" fill="#ff8c2a" opacity="0.6"/>
+    </svg>
+    <div class="zone-tags">
+      <span class="zone-tag">4000 Liège</span>
+      <span class="zone-tag">Seraing</span>
+      <span class="zone-tag">Herstal</span>
+      <span class="zone-tag">Ans</span>
+      <span class="zone-tag">Huy</span>
+      <span class="zone-tag">Waremme</span>
+      <span class="zone-tag">Verviers</span>
+    </div>
+  </div>
+</section>
+
+<div class="urgence-banner">
+  <div class="urgence-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Intervention rapide</div>
+  <div class="urgence-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07"/></svg> Disponible 24h/24 — 7j/7</div>
+  <div class="urgence-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> 4000 Liège &amp; Province</div>
+  <div class="urgence-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Tous types de véhicules</div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <p class="section-label">Ce que nous faisons</p>
+    <h2 class="section-title">Nos Services</h2>
+    <p class="section-desc">Du simple dépannage sur route au remorquage longue distance, nous assurons une prise en charge complète de votre véhicule.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3 class="service-title">Remorquage</h3>
+        <p class="service-desc">Transport de votre véhicule en panne, après accident ou pour convoyage. Disponible pour voitures, utilitaires et motos dans toute la région de Liège.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg></div>
+        <h3 class="service-title">Dépannage sur place</h3>
+        <p class="service-desc">Batterie déchargée, crevaison, problème de démarrage… Nous intervenons directement sur place pour remettre votre véhicule en route rapidement.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="service-title">Assistance accident</h3>
+        <p class="service-desc">Prise en charge après collision ou sortie de route. Sécurisation, assistance aux démarches et rapatriement vers le garage de votre choix.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+        <h3 class="service-title">Longue distance</h3>
+        <p class="service-desc">Besoin de rapatrier votre véhicule depuis ou vers une autre région ? Nous assurons le transport longue distance en toute sécurité.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">05</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></div>
+        <h3 class="service-title">Véhicules hors service</h3>
+        <p class="service-desc">Enlèvement de véhicules épaves, hors d'usage ou à déplacer pour travaux. Intervention propre et rapide sur Liège et environs.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">06</span>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3 class="service-title">Urgence 24h/24</h3>
+        <p class="service-desc">Nuits, week-ends, jours fériés… Joignables à toute heure pour une intervention d'urgence dans les meilleurs délais sur Liège et la Province.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="zone">
+  <div class="container">
+    <p class="section-label">Où nous intervenons</p>
+    <h2 class="section-title">Zone d'Intervention</h2>
+    <p class="section-desc">Basés à 4000 Liège, nous couvrons l'ensemble de la Province de Liège et ses communes environnantes.</p>
+    <div class="zone-grid">
+      <div class="zone-map-placeholder">
+        <div class="zone-map-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="zone-map-text">Province de Liège — Belgique</div>
+      </div>
+      <div>
+        <div class="zone-list-title">Communes desservies</div>
+        <div class="zone-group">
+          <div class="zone-group-name">Centre — Liège ville</div>
+          <div class="zone-cities">
+            <span class="zone-city main">4000 Liège</span>
+            <span class="zone-city">4020 Liège</span>
+            <span class="zone-city">4030 Grivegnée</span>
+            <span class="zone-city">4031 Angleur</span>
+            <span class="zone-city">4032 Chênée</span>
+          </div>
+        </div>
+        <div class="zone-group">
+          <div class="zone-group-name">Rive gauche & Seraing</div>
+          <div class="zone-cities">
+            <span class="zone-city">Seraing</span>
+            <span class="zone-city">Flemalle</span>
+            <span class="zone-city">Saint-Nicolas</span>
+            <span class="zone-city">Ivoz-Ramet</span>
+            <span class="zone-city">Jemeppe</span>
+          </div>
+        </div>
+        <div class="zone-group">
+          <div class="zone-group-name">Nord — Herstal & Ans</div>
+          <div class="zone-cities">
+            <span class="zone-city">Herstal</span>
+            <span class="zone-city">Ans</span>
+            <span class="zone-city">Vottem</span>
+            <span class="zone-city">Loncin</span>
+            <span class="zone-city">Awans</span>
+            <span class="zone-city">Grace-Hollogne</span>
+          </div>
+        </div>
+        <div class="zone-group">
+          <div class="zone-group-name">Est & périphérie</div>
+          <div class="zone-cities">
+            <span class="zone-city">Oupeye</span>
+            <span class="zone-city">Visé</span>
+            <span class="zone-city">Dalhem</span>
+            <span class="zone-city">Juprelle</span>
+            <span class="zone-city">Bassenge</span>
+          </div>
+        </div>
+        <div class="zone-group">
+          <div class="zone-group-name">Région élargie</div>
+          <div class="zone-cities">
+            <span class="zone-city">Huy</span>
+            <span class="zone-city">Waremme</span>
+            <span class="zone-city">Spa</span>
+            <span class="zone-city">Verviers</span>
+            <span class="zone-city">Malmedy</span>
+            <span class="zone-city">Stavelot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Nous contacter</p>
+    <h2 class="section-title">Contact &amp; Urgence</h2>
+    <p class="section-desc">Pour toute urgence, appelez directement. Pour une demande non urgente, utilisez le formulaire ci-dessous.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l1.71-1.71a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="contact-item-label">Téléphone urgence</div><div class="contact-item-value"><a href="tel:+32475339898">+32 475 33 98 98</a></div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="contact-item-label">Email</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#8ce0e5e9ebe9e8e9fcede2e2edebe9ccebe1ede5e0a2efe3e1"><span class="__cf_email__" data-cfemail="f39f9a969496979683929d9d929496b3949e929a9fdd909c9e">[email&#160;protected]</span></a></div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+            <div><div class="contact-item-label">Adresse</div><div class="contact-item-value">4000 Liège, Belgique</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><div class="contact-item-label">Horaires</div><div class="contact-item-value">24h/24 — 7j/7, jours fériés inclus</div></div>
+          </div>
+        </div>
+        <div class="contact-note"><strong>⚡ Urgence sur route ?</strong> Ne perdez pas de temps — appelez directement au <strong>+32 475 33 98 98</strong>. Nous décrocherons à toute heure.</div>
+      </div>
+      <div>
+        <div style="background:rgba(240,112,32,0.08);border:1px solid rgba(240,112,32,0.3);border-left:3px solid var(--orange);padding:1rem 1.3rem;margin-bottom:1.2rem;font-size:0.88rem;line-height:1.7;color:var(--white);">
+          <strong style="color:var(--orange);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.1em;text-transform:uppercase;font-size:0.8rem;">📋 Informations requises</strong><br>
+          Pour traiter votre demande rapidement, merci de remplir <strong>tous les champs</strong> ci-dessous : identité, véhicule, immatriculation, localisation et type d'intervention.
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <!-- IDENTITÉ -->
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);padding:0.5rem 0;border-bottom:1px solid var(--line);margin-bottom:0.5rem;">👤 Vos coordonnées</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Prénom *</label><input class="form-input" type="text" placeholder="Jean" required /></div>
+            <div class="form-group"><label class="form-label">Nom *</label><input class="form-input" type="text" placeholder="Dupont" required /></div>
+          </div>
+          <div class="form-group"><label class="form-label">Numéro de téléphone *</label><input class="form-input" type="tel" placeholder="+32 4XX XX XX XX" required /></div>
+
+          <!-- VÉHICULE -->
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);padding:0.5rem 0;border-bottom:1px solid var(--line);margin-bottom:0.5rem;margin-top:0.5rem;">🚗 Votre véhicule</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Type de véhicule *</label>
+              <select class="form-select" required>
+                <option value="">Sélectionnez...</option>
+                <option>Voiture particulière</option>
+                <option>SUV / 4x4</option>
+                <option>Utilitaire / Camionnette</option>
+                <option>Moto / Scooter</option>
+                <option>Camion</option>
+                <option>Camping-car / Caravane</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Marque &amp; Modèle *</label><input class="form-input" type="text" placeholder="Ex: Volkswagen Golf" required /></div>
+          </div>
+          <div class="form-group"><label class="form-label">Numéro d'immatriculation *</label><input class="form-input" type="text" placeholder="Ex: 1-ABC-123" required style="text-transform:uppercase;letter-spacing:0.1em;" /></div>
+
+          <!-- INTERVENTION -->
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);padding:0.5rem 0;border-bottom:1px solid var(--line);margin-bottom:0.5rem;margin-top:0.5rem;">📍 Intervention</div>
+          <div class="form-group">
+            <label class="form-label">Type d'intervention *</label>
+            <select class="form-select" required>
+              <option value="">Sélectionnez...</option>
+              <option>Remorquage urgent</option>
+              <option>Dépannage sur place</option>
+              <option>Assistance après accident</option>
+              <option>Remorquage longue distance</option>
+              <option>Enlèvement véhicule épave</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Localisation exacte (rue, numéro, commune, code postal) *</label><input class="form-input" type="text" placeholder="Ex: Rue de la Cathédrale 12, 4000 Liège" required /></div>
+          <div class="form-group"><label class="form-label">Description de la panne / situation</label><textarea class="form-textarea" placeholder="Décrivez le problème : panne moteur, crevaison, accident, véhicule qui ne démarre pas... Toute info utile nous aide à intervenir plus vite." style="min-height:90px;"></textarea></div>
+
+          <button type="submit" class="btn-submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Envoyer la demande
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">DÉPANNAGE<span>LIÈGE</span></div>
+  <div class="footer-zone">📍 4000 Liège &amp; Province de Liège — Belgique</div>
+  <div class="footer-copy">© 2025 Dépannage Liège — Tous droits réservés</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ Message envoyé !';
+    btn.style.background = '#2a9d5c';
+    setTimeout(() => {
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer la demande';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+  document.querySelectorAll('a
